@@ -18,6 +18,7 @@ const Index = (props: NewsProps) => {
   const [pageSize, setPageSize] = useState<number>(20);
   const [loading, setLoading] = useState<boolean>(true);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const screenWidth = window.screen.width;
 
   const fetchNews = async () => {
     setLoading(true);
@@ -54,6 +55,11 @@ const Index = (props: NewsProps) => {
   };
 
   useEffect(() => {
+    if (screenWidth >= 1536) {
+      setPageSize(40);
+    } else {
+      setPageSize(20);
+    }
     fetchNews();
     // eslint-disable-next-line
   }, [props.pageNo, props.searchQuery]);
@@ -67,7 +73,7 @@ const Index = (props: NewsProps) => {
   }, [props.articles]);
 
   return (
-    <div className="bg-blue-100">
+    <div className="bg-blue-100 h-screen">
       {loading && (
         <div className="flex justify-center items-center h-lvh w-lvw">
           <Spinner />
@@ -76,8 +82,7 @@ const Index = (props: NewsProps) => {
       {!loading && (
         <div className="px-10 pt-10">
           <div
-            className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 overflow-y-auto"
-            style={{ height: "629px" }}
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 overflow-y-auto h-[550px] md:h-[550px] lg:h-[550px] xl:h-[640px] 2xl:h-[1270px]"
             ref={scrollRef}
             onScroll={handleScroll}
           >

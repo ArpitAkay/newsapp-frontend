@@ -8,6 +8,33 @@ interface DrawerProps {
 }
 
 const index = (props: DrawerProps) => {
+  const newsTopics = [
+    "World News",
+    "Politics",
+    "Technology",
+    "Economy and Business",
+    "Science",
+    "Health",
+    "Environment",
+    "Education",
+    "Social Issues",
+    "Crime and Justice",
+    "Sports",
+    "Football",
+    "Cricket",
+    "Entertainment",
+    "Travel",
+    "Fashion and Lifestyle",
+    "Food and Culinary",
+    "Automotive",
+    "Space Exploration",
+    "Art and Culture",
+    "Fitness and Wellness",
+    "Home and Design",
+    "Science Fiction",
+    "Human Rights",
+  ];
+
   const handleSearchQuery = (event: React.MouseEvent<HTMLDivElement>) => {
     props.setPageNo(1);
     props.setArticles([]);
@@ -19,103 +46,18 @@ const index = (props: DrawerProps) => {
   return (
     <div className="h-lvh bg-blue-200">
       <div className="h-16 bg-blue-300"></div>
-      <div className="text-white cursor-pointer">
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Technology</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Science</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Politics</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Health</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Entertainment</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Economy and Business</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>World News</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Education</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Social Issues</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Environment</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Crime and Justice</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Travel</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Fashion and Lifestyle</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Food and Culinary</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Sports</button>
-        </div>
-        <div
-          className="flex justify-center py-2 px-10 px-5 bg-blue-400"
-          onClick={handleSearchQuery}
-        >
-          <button>Cricket</button>
-        </div>
+      <div className="text-white cursor-pointer overflow-scroll h-lvh">
+        {newsTopics.map((newsTopic, index) => {
+          return (
+            <div
+              key={index}
+              className="flex justify-center py-2 px-10 bg-blue-400"
+              onClick={handleSearchQuery}
+            >
+              <button>{newsTopic}</button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
