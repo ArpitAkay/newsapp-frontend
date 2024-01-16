@@ -14,6 +14,7 @@ interface NewsProps {
 }
 
 const Index = (props: NewsProps) => {
+  // eslint-disable-next-line
   const [pageSize, setPageSize] = useState<number>(20);
   const [loading, setLoading] = useState<boolean>(true);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -54,6 +55,7 @@ const Index = (props: NewsProps) => {
 
   useEffect(() => {
     fetchNews();
+    // eslint-disable-next-line
   }, [props.pageNo, props.searchQuery]);
 
   useEffect(() => {
@@ -61,6 +63,7 @@ const Index = (props: NewsProps) => {
       console.log(props.scrollPosition);
       scrollRef.current.scrollTo(0, props.scrollPosition);
     }
+    // eslint-disable-next-line
   }, [props.articles]);
 
   return (
